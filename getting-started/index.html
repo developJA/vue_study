@@ -16,7 +16,25 @@
         el: '#app',
         data: {
           message: 'Hello Vue'
-        }
+        },
+        beforeCreate : function(){
+          console.log("beforeCreate");
+        },
+        created : function(){
+          console.log("created");
+        },
+        mounted : function(){
+          console.log("mounted");
+        },
+        beforeUpdate : function(){
+          console.log("mounted");
+        },
+        updated : function(){
+          console.log("update");
+        },
+        destoryed : function(){
+          console.log("destoryed");
+        },
       })
     </script>
   </body>
