@@ -30,7 +30,6 @@
                     <router-view></router-view>
                 </div>
             `
-            // template : '<div>Body</div>'
 
         }
         
@@ -53,8 +52,8 @@
                 },
                 {
                     path : '/user',
-                    // name : body,
-                    component : User,
+                    name : 'body',
+                    component : Body,
                     children : [
                         {
                             path: 'posts',

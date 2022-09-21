@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+        <button v-on:click="addNum">increase</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data : {
+                num : 10,
+            },
+            /** 간단한 데이터 바인딩을 할때 사용한다.
+             * 웬만하면 computed를 쓰는게 좋다...!
+             **/
+            computed: {
+
+            },
+            /**
+             * 데이터의 변화에 따라 특정로직을 실행
+             * 무거운 로직을 돌릴때 사용한다. 데이터 요청
+             */
+            watch : {   
+                num : function(){
+                    this.logText(); // num 이 바뀔때 마다 logText를 실행
+                }
+            },
+            methods : {
+                addNum : function(){
+                    this.num = this.num + 1;
+                },
+                logText: function(){
+                    console.log('changed');
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
