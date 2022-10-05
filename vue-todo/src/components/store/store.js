@@ -21,10 +21,12 @@ const storage = {
 export const store = new Vuex.Store({
     state: {
         headerText: 'TODO it!!',
-        todoItems : storage.fetch()
+        todoItems : storage.fetch(),
+        addOneItem : {}
     },
     mutations: {
-        addOneItem(state, todoItem) {
+        addOneItem(state, todoItem) {   // mutation에서 state로 접근하는 방법 ? 첫번째 인자 state
+            console.log("received");
             const obj = {completed: false, item: todoItem};
             localStorage.setItem(todoItem, JSON.stringify(obj));
             state.todoItems.push(todoItem);
@@ -33,6 +35,11 @@ export const store = new Vuex.Store({
             localStorage.removeItem(payload.todoItem.item);
             state.todoItems.splice(payload.index, 1);
         },
+        toggleOneItem(state, payload) {
+            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
+            localStorage.removeItem(payload.todoItem.item);
+            localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
+        }
     }
     
 })

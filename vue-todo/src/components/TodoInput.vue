@@ -30,10 +30,10 @@
     },
     methods: {
         addTodo() {
-            console.log(this.newTodoItem);
             if(this.newTodoItem !== ''){
               // this.$emit('addTodoItem', this.newTodoItem);
-              this.$store.commit('addOneItem', this.newTodoItem.trim());
+              const text = this.newTodoItem.trim();
+              this.$store.commit('addOneItem', text);  // mutations을 동작시키기 위해 commit함
               this.clearInput();
             }else{
               console.log("모달 노출 >>> ",this.showModal);
