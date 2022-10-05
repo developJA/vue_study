@@ -23,18 +23,10 @@ export default {
       localStorage.clear();
       this.todoItems = [];
     },
-		// addTodo(todoItem) {
-		// 	localStorage.setItem(todoItem, todoItem);
-		// 	this.todoItems.push(todoItem);
-		// },
     // addOneItem(todoItem) {
     //   const obj = {completed: false, item: todoItem};
     //   localStorage.setItem(todoItem, JSON.stringify(obj));
     //   this.todoItems.push(todoItem);
-    // },
-    // removeTodo(todoItem, index) {
-    //   localStorage.removeItem(todoItem);
-    //   this.todoItems.splice(index, 1);
     // },
     // removeOneItem(todoItem, index){
     //   localStorage.removeItem(todoItem.item);
@@ -46,15 +38,6 @@ export default {
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     }
   },
-  // created() {
-	// 	if (localStorage.length > 0) {
-	// 		for (var i = 0; i < localStorage.length; i++) {
-	// 			if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-  //           this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-  //         }
-	// 		}
-	// 	}
-  // },
   components: {
     'TodoHeader': TodoHeader,
     'TodoInput': TodoInput,

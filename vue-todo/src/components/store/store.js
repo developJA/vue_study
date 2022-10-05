@@ -5,11 +5,12 @@ Vue.use(Vuex);      // use? 전역으로 Vuex를 쓰겠다.
 
 const storage = {
     fetch(){
-        const arr=[];
+        const arr = [];
         if (localStorage.length > 0) {
 			for (var i = 0; i < localStorage.length; i++) {
 				if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-                    store.state.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+                    // this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+                    arr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
                 }
 			}
 		}
@@ -19,7 +20,7 @@ const storage = {
 
 export const store = new Vuex.Store({
     state: {
-        // headerText: 'TODO it!',
+        headerText: 'TODO it!!',
         todoItems : storage.fetch()
     },
     mutations: {
@@ -35,6 +36,3 @@ export const store = new Vuex.Store({
     }
     
 })
-
-Vue.prototype._init = function (options) {
-}
