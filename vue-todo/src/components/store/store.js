@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex);      // use? 전역으로 Vuex를 쓰겠다.
+Vue.use(Vuex);      // use: 전역으로 Vuex를 쓰겠다.
 
 const storage = {
     fetch(){

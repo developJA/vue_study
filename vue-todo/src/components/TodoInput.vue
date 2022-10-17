@@ -6,16 +6,19 @@
             <i class="addBtn fas fa-plus" aria-hidden="true"></i>
         </span>
   
-        <Modal v-if="showModal" @close="showModal = false">
-            <!-- <h3 slot="header">경고</h3> -->
-            <h3>
-              <slot name="header">경고</slot>
-            </h3>
-            <span @click="showModal = false">
+        <Modal :show="showModal" @close="showModal = false">
+            <template v-slot:header><h3>경고</h3></template>
+            <template v-slot:footer>
+              <span @click="showModal = false">
+                할 일을 입력하세요.
+                <i class="closeModalBtn fas fa-times" aria-hidden="true" ></i>
+              </span>
+            </template>
+            <!-- <span @click="showModal = false">
               <slot name="footer">할 일을 입력하세요.</slot>
             <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
-            </span>
-        </Modal>
+            </span> -->
+        </Modal>  
     </div>
 </template>
   
@@ -75,5 +78,8 @@
   .addBtn {
     color: white;
     vertical-align: middle;
+  }
+  .closeModalBtn {
+    color : #42b983;
   }
 </style>
