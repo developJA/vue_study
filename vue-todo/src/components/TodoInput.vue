@@ -14,7 +14,9 @@
                 <i class="closeModalBtn fas fa-times" aria-hidden="true" ></i>
               </span>
             </template>
-            <!-- <span @click="showModal = false">
+            <!-- 
+              <h3 slot="header">경고</h3>
+              <span @click="showModal = false">
               <slot name="footer">할 일을 입력하세요.</slot>
             <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
             </span> -->
