@@ -26,6 +26,8 @@
   
 <script>
   import Modal from './common/Modal.vue'
+  import { mapMutations } from 'vuex';
+
   export default {
     data() {
         return {
@@ -34,6 +36,8 @@
         }
     },
     methods: {
+        ...mapMutations(['addOneItem']),
+
         addTodo() {
             if(this.newTodoItem !== ''){
               // this.$emit('addTodoItem', this.newTodoItem);

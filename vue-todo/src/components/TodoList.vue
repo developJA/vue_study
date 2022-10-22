@@ -1,11 +1,11 @@
 <template>
     <section>
         <transition-group name="list" tag="ul">
-            <li v-for="(todoItem, index) in this.$store.state.todoItems" :key="todoItem.item" class="shadow">
+            <li v-for="(todoItem, index) in this.storedTodoItems" v-bind:key="todoItem.item" class="shadow">
                 <i class="checkBtn fas fa-check" aria-hidden="true" v-bind:class="{checkBtnCompleted: todoItem.completed}" 
-                    v-on:click="toggleComplete(todoItem, index)"></i>
+                    v-on:click="toggleComplete({todoItem, index})"></i>
                 <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
-                <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
+                <span class="removeBtn" type="button" @click="removeTodo({todoItem, index})">
                     <i class="far fa-trash-alt" aria-hidden="true"></i>
                 </span>
             </li>
@@ -15,19 +15,27 @@
   
 <script>
   // import func from 'vue-editor-bridge';
+  import { mapGetters, mapMutations } from 'vuex';
+
   export default {
     // props: ['propsdata'],
     methods: {
-      removeTodo(todoItem, index) {
-        // console.log(todoItem, index);
-        // this.$emit('removeItem', todoItem, index);
-        this.$store.commit('removeOneItem', {todoItem, index});
-      },
-      toggleComplete: function(todoItem, index){
-        // this.$emit('toggleItem', todoItem, index);
-        this.$store.commit('toggleOneItem', {todoItem, index});
-      }
+      ...mapMutations({
+        removeTodo: 'removeOneItem',
+        toggleComplete: 'toggleOneItem',
+      }),
+
+      // toggleComplete: function(todoItem, index){
+      //   // this.$emit('toggleItem', todoItem, index);
+      //   this.$store.commit('toggleOneItem', {todoItem, index});
+      // }
     },
+    computed: {
+      // todoItems() {
+      //   return this.$store.getters.storedTodoItems;
+      // }
+      ...mapGetters(['storedTodoItems'])
+    }
   }
 </script>
   
@@ -63,5 +71,12 @@
     .list-enter, .list-leave-to {
       opacity: 0;
       transform: translateY(30px);
+    }
+    .checkBtnCompleted {
+        color: #b3adad;
+    }
+    .textCompleted {
+        text-decoration: line-through;
+        color: #b3adad;
     }
 </style>
