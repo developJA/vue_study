@@ -21,6 +21,9 @@ const state = {
 const getters = {
     storedTodoItems(state) {
         return state.todoItems;
+    },
+    getHeaderText(state) {
+        return state.headerText;
     }
 }
 
