@@ -13,11 +13,15 @@ export const store = new Vuex.Store({
         ask: [],
         jobs: [],
         user : [],
+        item : [],
     },
     getters : { // computed와 동일하지만 store에 존재
         fetchedAsk(state){
             return state.ask;
         },
+        fetchedItem(state){
+            return state.item;
+        }
     },
     mutations,
     actions
