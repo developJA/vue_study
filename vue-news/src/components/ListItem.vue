@@ -10,15 +10,15 @@
         <div> 
             <!-- 타이틀 영역 -->
           <p class="news-title">
-            <template v-if="item.url">
+            <template v-if="item.domain">
                 <a v-bind:href="item.url">
                     {{ item.title }}
                 </a>
             </template>
             <template v-else>
-                <router-link v-bind:to="`/item/${item.user}`">
-                    {{ item.title }}
-                </router-link>
+              <router-link v-bind:to="`/item/${item.id}`">
+                {{ item.title }}
+              </router-link>
             </template>
           </p>
           <small class="link-text">
