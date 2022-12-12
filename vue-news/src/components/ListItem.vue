@@ -16,7 +16,7 @@
                 </a>
             </template>
             <template v-else>
-                <router-link v-bind:to="`/item/${item.id}`">
+                <router-link v-bind:to="`/item/${item.user}`">
                     {{ item.title }}
                 </router-link>
             </template>

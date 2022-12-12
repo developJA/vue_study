@@ -1,8 +1,14 @@
 <template>
 <div>
     <section>
-        <!--질문 상세 정보-->
-        <div class="user-container">
+        <user-profile :info="fetchedItem">
+            <!-- <router-link slot="username" :to="`/user/${fetchedItem.user}`">
+                    {{ fetchedItem.user }}
+            </router-link> -->
+            <div slot="username">{{ fetchedItem.id }}</div>
+            <template slot="time">{{ "Posted "+ fetchedItem.created }}</template>
+        </user-profile>
+        <!-- <div class="user-container">
             <div>
                 <i class="fas fa-user"></i>
             </div>
@@ -14,7 +20,7 @@
                     {{ fetchedItem.time_ago }}
                 </div>
             </div>
-        </div>
+        </div> -->
         <h2>{{ fetchedItem.title }}</h2>
         <!--//질문 상세 정보-->
     </section>
@@ -29,17 +35,21 @@
 
 <script>
 /* Dynamic Rroute Matching : 특정페이지의 정보를 가지고 다음페이지를 이동할 수 있음 */
+import UserProfile from '../components/UserProfile.vue';
 import { mapGetters } from 'vuex';
 
 export default {
-computed : {
-    ...mapGetters(['fetchedItem'])
-},
-created() {
-    // console.log("this   ", this.$route);
-    const itemId = this.$route.params.id;
-    this.$store.dispatch('FETCH_ITEM', itemId);
-}
+    components : {
+        UserProfile
+    },
+    computed : {
+        ...mapGetters(['fetchedItem'])
+    },
+    created() {
+        // console.log("this   ", this.$route);
+        const itemId = this.$route.params.id;
+        this.$store.dispatch('FETCH_ITEM', itemId);
+    }
 }
 </script>
 
